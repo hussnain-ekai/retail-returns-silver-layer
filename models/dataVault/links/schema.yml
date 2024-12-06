@@ -1,0 +1,153 @@
+version: 2
+
+models:
+  - name: link_order_items
+    description: "Link table connecting ORDERS and PRODUCT_MASTER."
+    columns:
+      - name: order_item_id
+        description: "Primary key for the ORDER_ITEMS link table."
+        tests:
+          - not_null
+          - unique
+      - name: order_external_id
+        description: "Foreign key referencing ORDERS."
+        tests:
+          - not_null
+      - name: sku
+        description: "Foreign key referencing PRODUCT_MASTER."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+
+  - name: link_return_items
+    description: "Link table connecting RETURNS, ORDER_ITEMS, and CONDITION_GRADES."
+    columns:
+      - name: return_item_id
+        description: "Primary key for the RETURN_ITEMS link table."
+        tests:
+          - not_null
+          - unique
+      - name: return_id
+        description: "Foreign key referencing RETURNS."
+        tests:
+          - not_null
+      - name: order_item_id
+        description: "Foreign key referencing ORDER_ITEMS."
+        tests:
+          - not_null
+      - name: grade_id
+        description: "Foreign key referencing CONDITION_GRADES."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+
+  - name: link_liquidation_listings
+    description: "Link table connecting RETURN_ITEMS and PARTNER_SKUS."
+    columns:
+      - name: listing_id
+        description: "Primary key for the LIQUIDATION_LISTINGS link table."
+        tests:
+          - not_null
+          - unique
+      - name: return_item_id
+        description: "Foreign key referencing RETURN_ITEMS."
+        tests:
+          - not_null
+      - name: partner_sku_id
+        description: "Foreign key referencing PARTNER_SKUS."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+
+  - name: link_disposition_rules
+    description: "Link table connecting PRODUCT_MASTER and CONDITION_GRADES."
+    columns:
+      - name: rule_id
+        description: "Primary key for the DISPOSITION_RULES link table."
+        tests:
+          - not_null
+          - unique
+      - name: sku
+        description: "Foreign key referencing PRODUCT_MASTER."
+        tests:
+          - not_null
+      - name: condition_grade_id
+        description: "Foreign key referencing CONDITION_GRADES."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+
+  - name: link_financial_transactions
+    description: "Link table connecting FINANCIAL_TRANSACTIONS and RETURNS."
+    columns:
+      - name: transaction_id
+        description: "Primary key for the FINANCIAL_TRANSACTIONS link table."
+        tests:
+          - not_null
+          - unique
+      - name: return_id
+        description: "Foreign key referencing RETURNS."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+
+  - name: link_refurbishment_records
+    description: "Link table connecting RETURN_ITEMS and PARTNER_SKUS for refurbishment processes."
+    columns:
+      - name: refurb_id
+        description: "Primary key for the REFURBISHMENT_RECORDS link table."
+        tests:
+          - not_null
+          - unique
+      - name: return_item_id
+        description: "Foreign key referencing RETURN_ITEMS."
+        tests:
+          - not_null
+      - name: partner_sku_id
+        description: "Foreign key referencing PARTNER_SKUS."
+        tests:
+          - not_null
+      - name: load_date
+        description: "Timestamp indicating when the record was loaded."
+        tests:
+          - not_null
+      - name: record_source
+        description: "Identifier of the source system."
+        tests:
+          - not_null
+    
