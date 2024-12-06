@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: telelink_bronze
+    database: TELELINK
+    schema: BRONZE
+    tables:
+      - name: condition_grades
+      - name: customers
+      - name: disposition_outcomes
+      - name: disposition_rules
+      - name: financial_transactions
+      - name: inventory_locations
+      - name: inventory_states
+      - name: liquidation_listings
+      - name: orders
+      - name: order_items
+      - name: partner_skus
+      - name: product_master
+      - name: recycling_batches
+      - name: refurbishment_records
+      - name: returns
+      - name: return_items
+      - name: shipment_records
