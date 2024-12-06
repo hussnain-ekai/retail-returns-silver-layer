@@ -1,0 +1,93 @@
+version: 2
+
+models:
+  - name: sat_inventory_states
+    description: "Satellite table for Inventory States, tracking the state and condition of inventory items, including their location, current status, and last update timestamp."
+    columns:
+      - name: INVENTORY_STATE_ID
+        description: "A unique identifier for each inventory state record."
+        tests:
+          - not_null
+          - unique
+      - name: LOCATION_ID
+        description: "Identifier for the location where the inventory item is currently stored."
+        tests:
+          - not_null
+      - name: CURRENT_CONDITION_GRADE_ID
+        description: "Identifier representing the current condition grade of the inventory item."
+        tests:
+          - not_null
+      - name: CURRENT_STATUS
+        description: "The current status of the inventory item, such as 'Pending Refurbishment' or 'Disposed'."
+        tests:
+          - not_null
+      - name: LAST_UPDATE_TIMESTAMP
+        description: "Timestamp of the most recent update to this inventory state record."
+        tests:
+          - not_null
+      - name: LOAD_DATE
+        description: "Timestamp when the record was loaded into the database."
+        tests:
+          - not_null
+      - name: RECORD_SOURCE
+        description: "Identifier of the source system from which the record was loaded."
+        tests:
+          - not_null
+
+  - name: sat_disposition_outcomes
+    description: "Satellite table for Disposition Outcomes, recording the results of disposition processes for products, associating outcomes with specific return items."
+    columns:
+      - name: DISPOSITION_OUTCOME_ID
+        description: "A unique identifier for each disposition outcome record."
+        tests:
+          - not_null
+          - unique
+      - name: DISPOSITION_OUTCOME
+        description: "The outcome of the disposition process, such as 'Approved', 'Rejected', or 'Repaired'."
+        tests:
+          - not_null
+      - name: LAST_UPDATE_TIMESTAMP
+        description: "Timestamp of the most recent update to this disposition outcome record."
+        tests:
+          - not_null
+      - name: LOAD_DATE
+        description: "Timestamp when the record was loaded into the database."
+        tests:
+          - not_null
+      - name: RECORD_SOURCE
+        description: "Identifier of the source system from which the record was loaded."
+        tests:
+          - not_null
+
+  - name: sat_recycling_batches
+    description: "Satellite table for Recycling Batches, recording batches processed for recycling, including details about material type, weight, processing date, and associated costs."
+    columns:
+      - name: BATCH_ID
+        description: "A unique identifier for each recycling batch record."
+        tests:
+          - not_null
+          - unique
+      - name: PROCESSING_TIME
+        description: "Timestamp when the batch was processed."
+        tests:
+          - not_null
+      - name: BATCH_STATUS
+        description: "Status of the recycling batch, such as 'Processed' or 'Pending'."
+        tests:
+          - not_null
+      - name: BATCH_TIMESTAMP
+        description: "Timestamp of the batch processing event."
+        tests:
+          - not_null
+      - name: DISPOSAL_COST
+        description: "Cost associated with processing or disposing of the batch."
+        tests:
+          - not_null
+      - name: LOAD_DATE
+        description: "Timestamp when the record was loaded into the database."
+        tests:
+          - not_null
+      - name: RECORD_SOURCE
+        description: "Identifier of the source system from which the record was loaded."
+        tests:
+          - not_null
