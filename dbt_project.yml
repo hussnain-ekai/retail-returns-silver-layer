@@ -1,12 +1,30 @@
+name: 'telelink_dbt'
+version: '1.0.0'
+config-version: 2
+profile: 'telelink_dbt'
 
-        name: 'my_dbt_project'
-        version: '1.0'
-        config-version: 2
+source-paths: ['models']
+analysis-paths: ['analysis']
+test-paths: ['tests']
+data-paths: ['data']
+macro-paths: ['macros']
+target-path: 'target'
+clean-targets:
+  - 'target'
+  - 'dbt_modules'
 
-        profile: 'your_profile_name'
+models:
+  telelink_dbt:
+    staging:
+      +materialized: view
+    sources:
+      +enabled: true
+    dataVault:
+      hubs:
+        +materialized: view
+      links:
+        +materialized: view
+      satellites:
+        +materialized: view
 
-        target-path: "target"
-        clean-targets:
-        - "target"
-        - "dbt_modules"
-        
+# Additional configurations can be added here
